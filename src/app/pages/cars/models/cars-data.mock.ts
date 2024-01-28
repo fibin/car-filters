@@ -1,9 +1,9 @@
 import { CarBrands } from './car-brands.interface';
-import { CarsTableItems } from './cars-table-items.interface';
+import { CarTableItem } from './cars-table-items.interface';
 import { CarsTable } from './cars-table.interface';
 import { VehicleType } from './vehicle-type.enum';
 
-export const cars: CarsTableItems[] = [
+export const cars: CarTableItem[] = [
     {brand:CarBrands.BMW,model:"328",price:20000,type:VehicleType.SEDAN},
     {brand:CarBrands.BMW,model:"528",price:30000,type:VehicleType.UNIVERSAL},
     {brand:CarBrands.BMW,model:"X5",price:15000,type:VehicleType.SUV},

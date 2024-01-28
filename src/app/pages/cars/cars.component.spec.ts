@@ -13,7 +13,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CarsTableItems } from './models/cars-table-items.interface';
+import { CarTableItem } from './models/cars-table-items.interface';
 
 describe('CarsComponent', () => {
   let component: CarsComponent;
@@ -54,9 +54,9 @@ describe('CarsComponent', () => {
       brands: [CarBrands.BMW, CarBrands.AUDI],
     };
     const filteredCars = component['filterCars'](filter, carsTable.items);
-    const findBmw = filteredCars.find((car: CarsTableItems) => car.brand === CarBrands.BMW);
-    const findAudi = filteredCars.find((car: CarsTableItems) => car.brand === CarBrands.AUDI);
-    const findRenault = filteredCars.find((car: CarsTableItems) => car.brand === CarBrands.RENAULT);
+    const findBmw = filteredCars.find((car: CarTableItem) => car.brand === CarBrands.BMW);
+    const findAudi = filteredCars.find((car: CarTableItem) => car.brand === CarBrands.AUDI);
+    const findRenault = filteredCars.find((car: CarTableItem) => car.brand === CarBrands.RENAULT);
     expect(findBmw.brand).toEqual(CarBrands.BMW);
     expect(findAudi.brand).toEqual(CarBrands.AUDI);
     expect(findRenault?.brand).toEqual(undefined);
@@ -67,9 +67,9 @@ describe('CarsComponent', () => {
       models: ['X5']
     };
     const filteredCars = component['filterCars'](filter, carsTable.items);
-    const findBmwX5 = filteredCars.find((car: CarsTableItems) => car.model === 'X5');
-    const findBmw328 = filteredCars.find((car: CarsTableItems) => car.model === '328');
-    const findAudi = filteredCars.find((car: CarsTableItems) => car.brand === CarBrands.AUDI);
+    const findBmwX5 = filteredCars.find((car: CarTableItem) => car.model === 'X5');
+    const findBmw328 = filteredCars.find((car: CarTableItem) => car.model === '328');
+    const findAudi = filteredCars.find((car: CarTableItem) => car.brand === CarBrands.AUDI);
     expect(findBmwX5?.model).toEqual('X5');
     expect(findBmw328?.model).toEqual(undefined);
     expect(findAudi?.brand).toEqual(undefined);

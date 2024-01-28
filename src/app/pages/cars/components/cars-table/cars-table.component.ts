@@ -1,5 +1,5 @@
 import { AfterViewInit, ChangeDetectionStrategy, Component, Input, OnChanges, SimpleChanges, ViewChild } from '@angular/core';
-import { CarsTableItems } from '../../models/cars-table-items.interface';
+import { CarTableItem } from '../../models/cars-table-items.interface';
 import { MatTableDataSource } from '@angular/material/table';
 import { cars } from '../../models/cars-data.mock';
 import { MatPaginator } from '@angular/material/paginator';
@@ -11,16 +11,16 @@ import { MatPaginator } from '@angular/material/paginator';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CarsTableComponent implements OnChanges, AfterViewInit{
-  @Input() table: CarsTableItems[] = [];
+  @Input() table: CarTableItem[] = [];
   @Input() displayColumns: string[] = [];
   
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  dataSource = new MatTableDataSource<CarsTableItems>(cars);
+  dataSource = new MatTableDataSource<CarTableItem>(cars);
 
   ngOnChanges(changes: SimpleChanges): void {
       if (changes['table']) {
-        this.dataSource = new MatTableDataSource<CarsTableItems>(changes['table'].currentValue);
+        this.dataSource = new MatTableDataSource<CarTableItem>(changes['table'].currentValue);
         this.dataSource.paginator = this.paginator;
       }
   }

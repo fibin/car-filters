@@ -4,7 +4,7 @@ import { carsTable, headers } from './models/cars-data.mock';
 import { CarBrands } from './models/car-brands.interface';
 import { carModelsGroups } from './models/cars-models-groups.mock';
 import { VehicleType } from './models/vehicle-type.enum';
-import { CarsTableItems } from './models/cars-table-items.interface';
+import { CarTableItem } from './models/cars-table-items.interface';
 import { CarFilters } from './components/cars-filters/models/car-filters.interface';
 import { CarsGroup } from './components/cars-filters/models/cars-group.interface';
 import { CarsTable } from './models/cars-table.interface';
@@ -36,8 +36,8 @@ export class CarsComponent implements OnInit {
     this.tableData = tempCarsTable;
   }
 
-  private filterCars(filters: CarFilters, cars: CarsTableItems[]): CarsTableItems[] {
-    return cars.filter((car: CarsTableItems) =>
+  private filterCars(filters: CarFilters, cars: CarTableItem[]): CarTableItem[] {
+    return cars.filter((car: CarTableItem) =>
       (!filters?.brands || filters?.brands?.length === 0 || filters.brands.includes(car.brand)) &&
       (!filters.models || filters.models.length === 0 || filters.models.includes(car.model)) &&
       (!filters.vehicleTypes || filters.vehicleTypes.length === 0 || filters.vehicleTypes.includes(car.type)) &&
@@ -47,7 +47,7 @@ export class CarsComponent implements OnInit {
   }
 
   private getMaxPrice(): number {
-    const mostExpensiveCar = this.tableData?.items?.reduce((previous: CarsTableItems, current: CarsTableItems) => (previous && previous?.price > current?.price) ? previous : current);
+    const mostExpensiveCar = this.tableData?.items?.reduce((previous: CarTableItem, current: CarTableItem) => (previous && previous?.price > current?.price) ? previous : current);
     return mostExpensiveCar?.price || 0;
   }
 
