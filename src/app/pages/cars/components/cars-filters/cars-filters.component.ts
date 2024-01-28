@@ -41,7 +41,7 @@ export class CarsFiltersComponent implements OnInit {
       this.form.controls['priceRangeTo'].setErrors({'incorrect': true});
       this.form.controls['priceRangeTo'].markAsTouched();
     } else {
-      this.form.controls['priceRangeTo'].setErrors({});
+      this.form.controls['priceRangeTo'].setErrors({'incorrect': null});
       this.form.controls['priceRangeTo'].updateValueAndValidity();
     }
     this.filterSelected();
