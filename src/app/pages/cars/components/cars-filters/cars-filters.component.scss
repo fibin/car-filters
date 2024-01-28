@@ -1,0 +1,12 @@
+.cars-filters {
+    .form {
+        display: flex;
+    }
+    .form-control {
+        margin-right: 1rem
+    }
+
+    mat-form-field:last-of-type {
+        margin-right: 0;
+    }
+}

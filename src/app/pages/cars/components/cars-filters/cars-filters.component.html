@@ -1,0 +1,68 @@
+<div class="cars-filters">
+  <form
+    [formGroup]="form"
+    class="form">
+    <mat-form-field class="form-control">
+      <mat-label>Brands</mat-label>
+      <mat-select
+        multiple
+        formControlName="brands"
+        (selectionChange)="filterSelected()">
+        <mat-option
+          *ngFor="let brand of brands; trackBy: trackByValue"
+          [value]="brand">
+          {{ brand }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="form-control">
+      <mat-label>Models</mat-label>
+      <mat-select
+        multiple
+        formControlName="models"
+        (selectionChange)="filterSelected()">
+        <mat-optgroup
+          *ngFor="let group of models; trackBy: trackByModelGroup"
+          [label]="group.brand || ''"
+          [disabled]="group.disabled">
+          <mat-option
+            *ngFor="let model of group.models; trackBy: trackByValue"
+            [value]="model">
+            {{ model }}
+          </mat-option>
+        </mat-optgroup>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="form-control">
+      <mat-label>Vehicle Type</mat-label>
+      <mat-select
+        multiple
+        formControlName="vehicleTypes"
+        (selectionChange)="filterSelected()">
+        <mat-option
+          *ngFor="let type of vehicleTypes; trackBy: trackByValue"
+          [value]="type">
+          {{ type }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="form-control">
+      <mat-label>Price from</mat-label>
+        <input
+          formControlName="priceRangeFrom"
+          matInput
+          placeholder="Enter min price"
+          type="number"
+          (change)="filterSelected()"/>
+    </mat-form-field>
+    <mat-form-field class="form-control">
+      <mat-label>Price to</mat-label>
+      <input
+        formControlName="priceRangeTo"
+        matInput
+        placeholder="Enter max price"
+        type="number"
+        (change)="filterSelected()"/>
+  </mat-form-field>
+  </form>
+</div>

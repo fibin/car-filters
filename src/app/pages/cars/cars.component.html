@@ -1,0 +1,15 @@
+<div class="cars">
+  <app-cars-filters
+   [brands]="brands"
+   [models]="modelsGroup"
+   [vehicleTypes]="vehicleTypes"
+   [maxPrice]="maxPrice"
+   (filtersChanges)="filtersChanges($event)"
+   class="car-filters">
+  </app-cars-filters>
+    <app-cars-table
+      [table]="tableData.items || []"
+      [displayColumns]="tableData.headers || []"
+      class="cars-table">
+    </app-cars-table>
+</div>

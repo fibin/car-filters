@@ -1,0 +1,19 @@
+:host {
+    display: block;
+    height: 90%;
+}
+.cars {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    .car-filters {
+        display: block;
+        margin-bottom: 1rem;
+    }
+
+    .cars-table {
+        display: block;
+        height: 90%;
+    }
+}
