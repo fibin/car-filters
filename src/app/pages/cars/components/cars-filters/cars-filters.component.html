@@ -53,7 +53,7 @@
           matInput
           placeholder="Enter min price"
           type="number"
-          (change)="filterSelected()"/>
+          (change)="priceRangeChanged()"/>
     </mat-form-field>
     <mat-form-field class="form-control">
       <mat-label>Price to</mat-label>
@@ -62,7 +62,8 @@
         matInput
         placeholder="Enter max price"
         type="number"
-        (change)="filterSelected()"/>
+        (change)="priceRangeChanged()"/>
+        <mat-error *ngIf="!form.controls['priceRangeTo'].valid">Max price is lower then min price</mat-error>
   </mat-form-field>
   </form>
 </div>

@@ -29,7 +29,22 @@ export class CarsFiltersComponent implements OnInit {
   }
 
   filterSelected(): void {
-    this.filtersChanges.emit(this.form.getRawValue());
+    if (this.form.valid) {
+      this.filtersChanges.emit(this.form.getRawValue());
+    }
+  }
+
+  priceRangeChanged(): void {
+    const priceRangeFrom = this.form.controls['priceRangeFrom'].value;
+    const priceRangeTo = this.form.controls['priceRangeTo'].value;
+    if (priceRangeFrom > priceRangeTo) {
+      this.form.controls['priceRangeTo'].setErrors({'incorrect': true});
+      this.form.controls['priceRangeTo'].markAsTouched();
+    } else {
+      this.form.controls['priceRangeTo'].setErrors({});
+      this.form.controls['priceRangeTo'].updateValueAndValidity();
+    }
+    this.filterSelected();
   }
 
   trackByValue(_index: number, value: string): string {
